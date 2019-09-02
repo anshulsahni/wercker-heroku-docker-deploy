@@ -17,9 +17,17 @@ main() {
 }
 
 install_docker() {
+    info "Installing docker";
+
     apk add docker;
 
-    info "$(docker --version)";
+    info "Docker installed with the version: $(docker --version)";
+
+    info "Starting docker service";
+
+    service docker start;
+
+    info "Docker service started";
 }
 
 deploy_app_to_heroku() {
