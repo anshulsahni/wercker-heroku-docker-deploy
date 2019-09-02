@@ -6,6 +6,9 @@ main() {
     # are present or not
     check_for_env_variables;
 
+    # this is require to start the docker service
+    install_openrc;
+
     install_docker;
 
     check_if_heroku_present;
@@ -14,6 +17,14 @@ main() {
 
     deploy_app_to_heroku;    
     
+}
+
+install_openrc() {
+    info "Installing openrc package";
+
+    apk add openrc --no-cache;
+
+    info "openrc package installed";
 }
 
 install_docker() {

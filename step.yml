@@ -1,5 +1,5 @@
 name: heroku-docker-deploy
-version: 0.0.7
+version: 0.0.8
 summary: Helps deploying docker images to heroku apps
 tags:
   - deploy
