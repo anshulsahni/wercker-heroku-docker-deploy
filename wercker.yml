@@ -1,4 +1,4 @@
-box: finalgene/heroku-cli
+box: debian:stable-slim
 build:
   steps:
 

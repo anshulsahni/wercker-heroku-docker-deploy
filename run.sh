@@ -8,19 +8,37 @@ main() {
 
     check_if_heroku_present;
 
-    install_docker;
+    init_netrc;
+
+    deploy_app_to_heroku;    
     
 }
+
+deploy_app_to_heroku() {
+    heroku container:push web --app "$WERCKER_HEROKU_DOCKER_DEPLOY_APP_NAME";
+
+    heroku container:release web --app "$WERCKER_HEROKU_DOCKER_DEPLOY_APP_NAME";
+}
+
 
 check_if_heroku_present() {
     info "Checking heroku";
     info "$(heroku --version)";
 }
 
-install_docker() {
-    info "Installing docker";
-    wget -qO- https://get.docker.com/ | sh
-    info "$(docker -v)";
+init_netrc() {
+    local username="$WERCKER_HEROKU_DOCKER_DEPLOY_USER";
+    local password="$WERCKER_HEROKU_DOCKER_DEPLOY_ACCESS_KEY";
+    local netrcFile="$HOME/.netrc";
+
+    {
+        echo "machine api.heroku.com"
+        echo " login $username"
+        echo " password $password"
+    } >> "$netrcFile";
+
+    chmod 0600 "$netrcFile";
+
 }
 
 check_for_env_variables() {
