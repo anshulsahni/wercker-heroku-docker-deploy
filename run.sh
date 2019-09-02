@@ -6,12 +6,20 @@ main() {
     # are present or not
     check_for_env_variables;
 
+    install_docker;
+
     check_if_heroku_present;
 
     init_netrc;
 
     deploy_app_to_heroku;    
     
+}
+
+install_docker() {
+    apk add docker;
+
+    info "$(docker --version)";
 }
 
 deploy_app_to_heroku() {
