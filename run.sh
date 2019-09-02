@@ -36,7 +36,9 @@ install_docker() {
 
     info "Starting docker service";
 
+    set +e;
     service docker start;
+    set -e;
 
     info "Docker service started";
 }
