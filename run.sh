@@ -6,8 +6,15 @@ main() {
     # are present or not
     check_for_env_variables;
 
+    check_if_heroku_present;
+
     install_docker;
     
+}
+
+check_if_heroku_present() {
+    info "Checking heroku";
+    info "$(heroku --version)";
 }
 
 install_docker() {

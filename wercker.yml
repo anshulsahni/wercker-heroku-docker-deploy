@@ -1,4 +1,4 @@
-box: debian:stable-slim
+box: finalgene/heroku-cli
 build:
   steps:
 
@@ -11,9 +11,6 @@ build:
 
 publish:
   steps:
-
-    - install-packages:
-        packages: git docker
 
     - internal/publish-step:
         private: true
