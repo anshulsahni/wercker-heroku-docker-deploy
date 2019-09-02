@@ -5,7 +5,15 @@ main() {
     # check if all the requird environment variables 
     # are present or not
     check_for_env_variables;
+
+    install_docker;
     
+}
+
+install_docker() {
+    info "Installing docker";
+    wget -qO- https://get.docker.com/ | sh
+    info "$(docker -v)";
 }
 
 check_for_env_variables() {
