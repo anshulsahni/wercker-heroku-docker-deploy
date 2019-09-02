@@ -1,0 +1,23 @@
+name: heroku-docker-deploy
+version: 0.0.1
+summary: Helps deploying docker images to heroku apps
+tags:
+  - deploy
+  - heroku
+  - docker
+properties:
+  - name: app-name
+    type: string
+    required: true
+
+  - name: user
+    type: string
+    required: true
+
+  - name: access-key
+    type: string
+    required: true
+
+  - name: ssh-key-name
+    type: string
+    required: true
